@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useRecoilValue } from "recoil";
+import "./App.css";
+import { regionState, zoneState } from "./appState";
+import { RegionSelect } from "./RegionSelect";
+import { ZoneSelect } from "./ZoneSelect";
 
 function App() {
+  const region = useRecoilValue(regionState);
+  const zone = useRecoilValue(zoneState);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>region:{region.name}</p>
+      <p>zone:{zone.name}</p>
+      <RegionSelect />
+      <ZoneSelect />
     </div>
   );
 }
