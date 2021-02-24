@@ -7,19 +7,18 @@ interface ISpec {
 
 interface IZone {
   id: string;
-  name: string;
   spec: ISpec[];
 }
 
 interface IRegion {
   id: string;
-  name: string;
   zones: IZone[];
 }
 
 export const regionsState = selector({
   key: "regionsState",
   get: ({ get }) => {
+    // mock as if loaded from remote
     return Promise.resolve<IRegion[]>(mockRegionData);
   },
 });

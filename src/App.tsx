@@ -12,8 +12,8 @@ function App() {
   const spec = useRecoilValue(specState);
   return (
     <div className="App">
-      <p>region:{region.name}</p>
-      <p>zone:{zone.name}</p>
+      <p>region:{region.id}</p>
+      <p>zone:{zone.id}</p>
       <p>mem:{spec.mem}G</p>
       <RegionSelect />
       <ZoneSelect />
