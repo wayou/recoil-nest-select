@@ -6,8 +6,6 @@ export function ZoneSelect() {
   const zones = useRecoilValue(zonesState);
   const [zone, setZone] = useRecoilState(zoneState);
 
-  console.log("zone:", zone.name);
-
   return (
     <label htmlFor="zoneId">
       可用区：

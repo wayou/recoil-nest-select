@@ -1,11 +1,12 @@
 import React from "react";
 import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
-import { regionsState, regionState, zoneState } from "./appState";
+import { regionsState, regionState, specState, zoneState } from "./appState";
 
 export function RegionSelect() {
   const regions = useRecoilValue(regionsState);
   const [region, setRegion] = useRecoilState(regionState);
   const resetZone = useResetRecoilState(zoneState);
+  const resetSpec = useResetRecoilState(specState);
   return (
     <label htmlFor="regionId">
       地域：
@@ -17,6 +18,7 @@ export function RegionSelect() {
           const regionId = event.target.value;
           const region = regions.find((region) => region.id === regionId);
           resetZone();
+          resetSpec();
           setRegion(region!);
         }}
       >

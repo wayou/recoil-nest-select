@@ -1,9 +1,14 @@
 import { atom, selector } from "recoil";
 import { mockRegionData } from "./mock";
 
+interface ISpec {
+  mem: number;
+}
+
 interface IZone {
   id: string;
   name: string;
+  spec: ISpec[];
 }
 
 interface IRegion {
@@ -44,6 +49,24 @@ export const zoneState = atom({
     key: "zoneState/default",
     get: ({ get }) => {
       return get(zonesState)[0];
+    },
+  }),
+});
+
+export const specsState = selector({
+  key: "specsState",
+  get: ({ get }) => {
+    const zone = get(zoneState);
+    return zone.spec;
+  },
+});
+
+export const specState = atom({
+  key: "specState",
+  default: selector({
+    key: "specState/default",
+    get: ({ get }) => {
+      return get(specsState)[0];
     },
   }),
 });
