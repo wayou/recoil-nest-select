@@ -10,6 +10,7 @@ function App() {
   const region = useRecoilValue(regionState);
   const zone = useRecoilValue(zoneState);
   const spec = useRecoilValue(specState);
+  console.log("region", region.id);
   return (
     <div className="App">
       <p>region:{region.id}</p>

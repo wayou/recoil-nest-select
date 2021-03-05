@@ -1,10 +1,21 @@
-import React from "react";
+import { parse } from "query-string";
+import React, { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { regionsState, regionState } from "./appState";
 
 export function RegionSelect() {
   const regions = useRecoilValue(regionsState);
   const [region, setRegion] = useRecoilState(regionState);
+  const regionId = parse(window.location.search).region;
+
+  useEffect(() => {
+    if (regionId) {
+      const urlRegion = regions.find((region) => region.id === regionId);
+      if (urlRegion) {
+        setRegion(urlRegion);
+      }
+    }
+  }, [regionId, regions, setRegion]);
 
   return (
     <label htmlFor="regionId">
